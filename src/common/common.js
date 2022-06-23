@@ -1,6 +1,6 @@
 export function play(fn, ms = 2000) {
-  if (typeof "function") fn();
   return new Promise((resolve, reject) => {
+    if (typeof fn === "function") fn();
     setTimeout((e) => {
       resolve();
     }, ms);
