@@ -17,4 +17,7 @@ export const defaultTheme = {
   groundColor2: "greenyellow",
 
   lineColor: "white",
+
+  buttonBackground: "tomato",
+  buttonColor: "white",
 };
