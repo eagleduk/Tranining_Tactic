@@ -5,11 +5,11 @@ const Ground = styled.div`
   height: 100%;
   background: ${(props) => `linear-gradient(
     to bottom,
-    ${props.theme.groundColor1} 0% 20%,
-    ${props.theme.groundColor2} 20% 40%,
-    ${props.theme.groundColor1} 40% 60%,
-    ${props.theme.groundColor2} 60% 80%,
-    ${props.theme.groundColor1} 80% 100%
+    ${props.theme.ground.groundColor1} 0% 20%,
+    ${props.theme.ground.groundColor2} 20% 40%,
+    ${props.theme.ground.groundColor1} 40% 60%,
+    ${props.theme.ground.groundColor2} 60% 80%,
+    ${props.theme.ground.groundColor1} 80% 100%
   );`};
   box-sizing: border-box;
   position: relative;
@@ -23,7 +23,7 @@ const Ground = styled.div`
 const TouchLine = styled.div`
   width: 100%;
   height: 100%;
-  border-color: ${(props) => props.theme.lineColor};
+  border-color: ${(props) => props.theme.ground.lineColor};
   border-width: 5px;
   border-style: solid;
   border-bottom-width: 0px;
@@ -39,7 +39,7 @@ const TouchLine = styled.div`
 const SafetyZone = styled.div`
   width: 50%;
   height: 40%;
-  border-color: ${(props) => props.theme.lineColor};
+  border-color: ${(props) => props.theme.ground.lineColor};
   border-width: 5px;
   border-top-width: 0px;
   border-style: solid;
@@ -60,13 +60,13 @@ const PenaltyCircle = styled.div`
   border-bottom-right-radius: 110px;
   border-width: 5px;
   border-style: solid;
-  border-color: ${(props) => props.theme.lineColor};
+  border-color: ${(props) => props.theme.ground.lineColor};
   border-top-width: 0px;
 `;
 
 const HalfLine = styled.div`
   width: 100%;
-  border-top-color: ${(props) => props.theme.lineColor};
+  border-top-color: ${(props) => props.theme.ground.lineColor};
   border-top-width: 5px;
   border-top-style: solid;
   box-sizing: border-box;
@@ -80,7 +80,7 @@ const HalfCircle = styled.div`
   border-radius: 50%;
   border-width: 5px;
   border-style: solid;
-  border-color: ${(props) => props.theme.lineColor};
+  border-color: ${(props) => props.theme.ground.lineColor};
   top: calc(100% * 0.92 - 10%);
   position: absolute;
 `;

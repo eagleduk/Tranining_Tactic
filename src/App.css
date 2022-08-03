@@ -53,3 +53,11 @@ html {
 	font-family: 'Noto Serif KR', serif;
 	box-sizing: border-box;
 }
+
+a {
+	text-decoration: none;
+}
+
+a:visited {
+	color: red;
+}

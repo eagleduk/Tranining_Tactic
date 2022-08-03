@@ -1,21 +1,120 @@
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Navigate() {
+const NavStyle = styled.nav`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: ${(props) => props.theme.menu.containerColor};
+  z-index: 10;
+  top: 0px;
+  left: 0px;
+  font-size: 18px;
+  color: ${(props) => props.theme.menu.color};
+  display: grid;
+  grid-template-columns: 35% 1fr;
+`;
+
+const Main = styled.div`
+  background-color: ${(props) => props.theme.menu.contentColor};
+`;
+
+const Header = styled.div`
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  a {
+    display: block;
+    width: 100%;
+  }
+`;
+
+const Body = styled.div``;
+
+const Details = styled.details`
+  summary {
+    list-style: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    :hover {
+      background-color: ${(props) => props.theme.menu.hoverColor};
+    }
+  }
+
+  summary::after {
+    content: "+";
+    font-size: 22px;
+  }
+
+  &[open] summary::after {
+    content: "—";
+    font-size: 18px;
+  }
+
+  li {
+    padding: 5px 0;
+    :hover {
+      background-color: ${(props) => props.theme.menu.hoverColor};
+      cursor: pointer;
+    }
+
+    a {
+      display: block;
+      width: 100%;
+
+      span {
+        display: block;
+        padding-left: 15px;
+        box-sizing: border-box;
+      }
+    }
+  }
+`;
+
+export default function Navigate({ setOpenMenu }) {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <details style={{ display: "none" }}>
-        <summary>training</summary>
-        <p>
-          <Link to="/ladder">ladder training</Link>
-        </p>
-      </details>
-      <details>
-        <summary>tactics</summary>
-        <p>
-          <Link to="/sideplay1">Side Play1</Link>
-        </p>
-      </details>
-    </nav>
+    <NavStyle>
+      <Main>
+        <Header>
+          <Link to="/">
+            <FontAwesomeIcon icon={faHouse} size="2x" />
+          </Link>
+        </Header>
+        <Body>
+          <Details style={{ display: "" }}>
+            <summary>training</summary>
+            <ul>
+              <li>
+                <Link to="/ladder">
+                  <span>ladder training</span>
+                </Link>
+              </li>
+            </ul>
+          </Details>
+          <Details>
+            <summary>tactics</summary>
+            <ul>
+              <li>
+                <Link to="/sideplay1">
+                  <span>Side Play1</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/ladder">
+                  <span>ladder training</span>
+                </Link>
+              </li>
+            </ul>
+          </Details>
+        </Body>
+      </Main>
+      <div
+        style={{ backgroundColor: "inherit" }}
+        onClick={() => setOpenMenu(false)}
+      ></div>
+    </NavStyle>
   );
 }

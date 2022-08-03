@@ -5,9 +5,9 @@ const DefaultButton = styled.button`
   height: 35px;
   border-radius: 10px;
   border-width: 0;
-  background-color: ${(props) => props.theme.buttonBackground};
+  background-color: ${(props) => props.theme.button.background};
   opacity: 0.6;
-  color: ${(props) => props.theme.buttonColor};
+  color: ${(props) => props.theme.button.color};
   font-size: 22px;
   text-align: center;
   cursor: pointer;

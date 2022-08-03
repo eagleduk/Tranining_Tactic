@@ -7,17 +7,29 @@ export const defaultTheme = {
 
   footColor: "tomato",
 
-  playerColor: "tomato",
-  playerColor2: "yellow",
-  playerLabel: "aqua",
-
   ballColor: "black",
 
-  groundColor1: "green",
-  groundColor2: "greenyellow",
+  menu: {
+    containerColor: "rgba(0, 0, 0, .6)",
+    contentColor: "rgba(0, 0, 0, 1)",
+    color: "white",
+    hoverColor: "whitesmoke",
+  },
 
-  lineColor: "white",
+  player: {
+    playerColor: "tomato",
+    playerColor2: "yellow",
+    playerLabel: "aqua",
+  },
 
-  buttonBackground: "tomato",
-  buttonColor: "white",
+  ground: {
+    groundColor1: "green",
+    groundColor2: "greenyellow",
+    lineColor: "white",
+  },
+
+  button: {
+    background: "tomato",
+    color: "white",
+  },
 };
