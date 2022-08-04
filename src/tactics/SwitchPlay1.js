@@ -1,8 +1,6 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { actions } from "../actions/SidePlay1Action";
+import { actions } from "../actions/SwitchPlay1Action";
 import { play } from "../common/common";
 import Ball from "../tools/Ball";
 import {
@@ -32,15 +30,31 @@ const HeaderContainer = styled.div`
   justify-content: center;
 `;
 
-export default function SidePlay1() {
+export default function SwitchPlay1() {
   const cfRef = useRef(),
     lwfRef = useRef(),
     rwfRef = useRef(),
     rbRef = useRef(),
+    lbRef = useRef(),
+    cbRef = useRef(),
+    cb2Ref = useRef(),
     cmRef = useRef(),
+    cm2Ref = useRef(),
     ballRef = useRef();
+  console.dir(cfRef);
 
-  const actionSteps = actions(cfRef, lwfRef, rwfRef, rbRef, cmRef, ballRef);
+  const actionSteps = actions(
+    cfRef,
+    lwfRef,
+    rwfRef,
+    rbRef,
+    lbRef,
+    cbRef,
+    cb2Ref,
+    cmRef,
+    cm2Ref,
+    ballRef
+  );
 
   const [step, setStep] = useState(0);
   const [onPlay, setPlay] = useState(false);
@@ -114,8 +128,12 @@ export default function SidePlay1() {
         <Player ref={cfRef} label="CF" />
         <Player ref={rwfRef} label="RWF" />
         <Player ref={lwfRef} label="LWF" />
-        <Player ref={rbRef} label="RB" />
         <Player ref={cmRef} label="CM" />
+        <Player ref={cm2Ref} label="CM" against />
+        <Player ref={rbRef} label="RB" against />
+        <Player ref={lbRef} label="LB" against />
+        <Player ref={cbRef} label="CB" against />
+        <Player ref={cb2Ref} label="CB" against />
         <Ball ref={ballRef} />
       </Stadium>
     </Wrapper>

@@ -7,7 +7,7 @@ const NavStyle = styled.nav`
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: ${(props) => props.theme.menu.containerColor};
+  background-color: ${(props) => props.theme.menu.containerBGColor};
   z-index: 10;
   top: 0px;
   left: 0px;
@@ -15,27 +15,33 @@ const NavStyle = styled.nav`
   color: ${(props) => props.theme.menu.color};
   display: grid;
   grid-template-columns: 35% 1fr;
+  a {
+    display: block;
+    width: 100%;
+    color: ${(props) => props.theme.menu.color2};
+
+    &:visited {
+      color: ${(props) => props.theme.menu.color2};
+    }
+  }
 `;
 
 const Main = styled.div`
-  background-color: ${(props) => props.theme.menu.contentColor};
+  background-color: ${(props) => props.theme.menu.menuBGColor};
 `;
 
 const Header = styled.div`
   padding: 10px 20px;
   margin-bottom: 10px;
-  a {
-    display: block;
-    width: 100%;
-  }
 `;
 
 const Body = styled.div``;
 
 const Details = styled.details`
+  margin-bottom: 5px;
   summary {
     list-style: none;
-    padding: 5px 5px;
+    padding: 10px 5px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -56,20 +62,16 @@ const Details = styled.details`
 
   li {
     padding: 5px 0;
+    font-size: 16px;
     :hover {
       background-color: ${(props) => props.theme.menu.hoverColor};
       cursor: pointer;
     }
 
-    a {
+    span {
       display: block;
-      width: 100%;
-
-      span {
-        display: block;
-        padding-left: 15px;
-        box-sizing: border-box;
-      }
+      padding-left: 15px;
+      box-sizing: border-box;
     }
   }
 `;
@@ -81,6 +83,7 @@ export default function Navigate({ setOpenMenu }) {
         <Header>
           <Link to="/">
             <FontAwesomeIcon icon={faHouse} size="2x" />
+            <span> HOME</span>
           </Link>
         </Header>
         <Body>
@@ -103,8 +106,8 @@ export default function Navigate({ setOpenMenu }) {
                 </Link>
               </li>
               <li>
-                <Link to="/ladder">
-                  <span>ladder training</span>
+                <Link to="/switchplay1">
+                  <span>Switch Play1</span>
                 </Link>
               </li>
             </ul>

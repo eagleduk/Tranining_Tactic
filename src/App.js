@@ -8,6 +8,7 @@ import SidePlay1 from "./tactics/SidePlay1";
 import Home from "./Home";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import SwitchPlay1 from "./tactics/SwitchPlay1";
 
 const Body = styled.div`
   width: 100vw;
@@ -18,7 +19,7 @@ function App() {
   const [openMenu, setOpenMenu] = useState(true);
   const { pathname } = useLocation();
 
-  //useEffect(() => setOpenMenu(false), [pathname]);
+  useEffect(() => setOpenMenu(false), [pathname]);
 
   return (
     <Body>
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/ladder" element={<LadderTraining1 />} />
         <Route path="/sideplay1" element={<SidePlay1 />} />
+        <Route path="/switchplay1" element={<SwitchPlay1 />} />
       </Routes>
     </Body>
   );

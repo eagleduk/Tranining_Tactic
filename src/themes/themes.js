@@ -10,10 +10,11 @@ export const defaultTheme = {
   ballColor: "black",
 
   menu: {
-    containerColor: "rgba(0, 0, 0, .6)",
-    contentColor: "rgba(0, 0, 0, 1)",
+    containerBGColor: "rgba(0, 0, 0, .6)",
+    menuBGColor: "rgba(0, 0, 0, 1)",
     color: "white",
-    hoverColor: "whitesmoke",
+    color2: "white",
+    hoverColor: "gray",
   },
 
   player: {

@@ -6,7 +6,7 @@ const DefaultButton = styled.button`
   border-radius: 10px;
   border-width: 0;
   background-color: ${(props) => props.theme.button.background};
-  opacity: 0.6;
+  opacity: 0.8;
   color: ${(props) => props.theme.button.color};
   font-size: 22px;
   text-align: center;

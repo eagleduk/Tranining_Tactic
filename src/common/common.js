@@ -4,5 +4,5 @@ export function play(fn, ms = 2000) {
     setTimeout((e) => {
       resolve();
     }, ms);
-  });
+  }).catch((err) => console.log("play ", err));
 }

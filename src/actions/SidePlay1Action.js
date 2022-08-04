@@ -1,3 +1,54 @@
+const positions = [
+  [
+    { left: 48, top: 15 }, // cfRef
+    { left: 16, top: 26 }, // lwfRef
+    { left: 82, top: 22 }, // rwfRef
+    { left: 88, top: 77 }, // rbRef
+    { left: 55, top: 82 }, // cmRef
+    { left: 59, top: 80 }, // ballRef
+  ],
+  [
+    { left: 46, top: 21 }, // cfRef
+    { left: 18, top: 22 }, // lwfRef
+    { left: 72, top: 33 }, // rwfRef
+    { left: 88, top: 44 }, // rbRef
+    { left: 55, top: 82 }, // cmRef
+    { left: 72, top: 38 }, // ballRef
+  ],
+  [
+    { left: 48, top: 23 }, // cfRef
+    { left: 20, top: 20 }, // lwfRef
+    { left: 72, top: 33 }, // rwfRef
+    { left: 88, top: 30 }, // rbRef
+    { left: 55, top: 82 }, // cmRef
+    { left: 55, top: 30 }, // ballRef
+  ],
+  [
+    { left: 40, top: 16 }, // cfRef
+    { left: 24, top: 16 }, // lwfRef
+    { left: 56, top: 14 }, // rwfRef
+    { left: 80, top: 14 }, // rbRef
+    { left: 55, top: 82 }, // cmRef
+    { left: 78, top: 18 }, // ballRef
+  ],
+];
+
+export const actions = (...args) => {
+  const action = positions.map((position) => {
+    return args.map((arg, index) => {
+      return {
+        target: arg,
+        action: (reference) => {
+          reference.current.style.top = `${position[index]?.top}%`;
+          reference.current.style.left = `${position[index]?.left}%`;
+        },
+      };
+    });
+  });
+  return action;
+};
+
+/*
 export const actions = (cfRef, lwfRef, rwfRef, rbRef, cmRef, ballRef) => {
   return [
     [
@@ -178,3 +229,4 @@ export const actions = (cfRef, lwfRef, rwfRef, rbRef, cmRef, ballRef) => {
     ],
   ];
 };
+*/
