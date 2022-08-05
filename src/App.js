@@ -9,6 +9,8 @@ import Home from "./Home";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import SwitchPlay1 from "./tactics/SwitchPlay1";
+import Position433 from "./position/Position433";
+import Position442 from "./position/Position442";
 
 const Body = styled.div`
   width: 100vw;
@@ -31,6 +33,8 @@ function App() {
         <Route path="/ladder" element={<LadderTraining1 />} />
         <Route path="/sideplay1" element={<SidePlay1 />} />
         <Route path="/switchplay1" element={<SwitchPlay1 />} />
+        <Route path="/position442" element={<Position442 />} />
+        <Route path="/position433" element={<Position433 />} />
       </Routes>
     </Body>
   );

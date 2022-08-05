@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import styled from "styled-components";
-import { actions } from "../actions/SidePlay1Action";
-import { play } from "../common/common";
+import { HeaderContainer, play, Wrapper } from "../common/common";
 import Ball from "../tools/Ball";
 import {
   NextButton,
@@ -15,22 +14,7 @@ import {
 import Field from "../tools/Field";
 import Player from "../tools/Player";
 import Stadium from "../tools/Stadium";
-
-const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-const HeaderContainer = styled.div`
-  width: 80%;
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-`;
+import { actions } from "../actions/sidePlay1Action";
 
 export default function SidePlay1() {
   const cfRef = useRef(),
@@ -110,13 +94,14 @@ export default function SidePlay1() {
         />
       </HeaderContainer>
       <Stadium>
-        <Field></Field>
-        <Player ref={cfRef} label="CF" />
-        <Player ref={rwfRef} label="RWF" />
-        <Player ref={lwfRef} label="LWF" />
-        <Player ref={rbRef} label="RB" />
-        <Player ref={cmRef} label="CM" />
-        <Ball ref={ballRef} />
+        <Field>
+          <Player ref={cfRef} label="CF" />
+          <Player ref={rwfRef} label="RWF" />
+          <Player ref={lwfRef} label="LWF" />
+          <Player ref={rbRef} label="RB" />
+          <Player ref={cmRef} label="CM" />
+          <Ball ref={ballRef} />
+        </Field>
       </Stadium>
     </Wrapper>
   );

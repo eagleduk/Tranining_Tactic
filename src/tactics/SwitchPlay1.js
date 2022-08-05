@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { actions } from "../actions/SwitchPlay1Action";
-import { play } from "../common/common";
+import { actions } from "../actions/switchPlay1Action";
+import { HeaderContainer, play, Wrapper } from "../common/common";
 import Ball from "../tools/Ball";
 import {
   NextButton,
@@ -14,22 +14,6 @@ import Field from "../tools/Field";
 import Player from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
-const Wrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-`;
-
-const HeaderContainer = styled.div`
-  width: 80%;
-  display: flex;
-  gap: 5px;
-  justify-content: center;
-`;
-
 export default function SwitchPlay1() {
   const cfRef = useRef(),
     lwfRef = useRef(),
@@ -41,7 +25,6 @@ export default function SwitchPlay1() {
     cmRef = useRef(),
     cm2Ref = useRef(),
     ballRef = useRef();
-  console.dir(cfRef);
 
   const actionSteps = actions(
     cfRef,

@@ -11,10 +11,10 @@
   ballRef
   */
 
-const positions = [];
+const locations = [];
 
 export const actions = (...args) => {
-  const action = positions.map((position) => {
+  const action = locations.map((position) => {
     return args.map((arg, index) => {
       return {
         target: arg,

@@ -112,6 +112,21 @@ export default function Navigate({ setOpenMenu }) {
               </li>
             </ul>
           </Details>
+          <Details>
+            <summary>position</summary>
+            <ul>
+              <li>
+                <Link to="/position442">
+                  <span>4-4-2</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/position433">
+                  <span>4-3-3</span>
+                </Link>
+              </li>
+            </ul>
+          </Details>
         </Body>
       </Main>
       <div

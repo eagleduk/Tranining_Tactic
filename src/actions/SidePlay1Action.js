@@ -1,46 +1,47 @@
-const positions = [
+const locations = [
   [
-    { left: 48, top: 15 }, // cfRef
-    { left: 16, top: 26 }, // lwfRef
-    { left: 82, top: 22 }, // rwfRef
-    { left: 88, top: 77 }, // rbRef
-    { left: 55, top: 82 }, // cmRef
-    { left: 59, top: 80 }, // ballRef
+    [48, 15], // cfRef : left, top
+    [16, 26], // lwfRef : left, top
+    [82, 22], // rwfRef : left, top
+    [88, 48], // rbRef : left, top
+    [55, 44], // cmRef : left, top
+    [59, 42], // ballRef : left, top
   ],
   [
-    { left: 46, top: 21 }, // cfRef
-    { left: 18, top: 22 }, // lwfRef
-    { left: 72, top: 33 }, // rwfRef
-    { left: 88, top: 44 }, // rbRef
-    { left: 55, top: 82 }, // cmRef
-    { left: 72, top: 38 }, // ballRef
+    [46, 21], // cfRef : left, top
+    [18, 22], // lwfRef : left, top
+    [68, 28], // rwfRef : left, top
+    [88, 37], // rbRef : left, top
+    [55, 44], // cmRef : left, top
+    [66, 32], // ballRef : left, top
   ],
   [
-    { left: 48, top: 23 }, // cfRef
-    { left: 20, top: 20 }, // lwfRef
-    { left: 72, top: 33 }, // rwfRef
-    { left: 88, top: 30 }, // rbRef
-    { left: 55, top: 82 }, // cmRef
-    { left: 55, top: 30 }, // ballRef
+    [48, 23], // cfRef : left, top
+    [20, 20], // lwfRef : left, top
+    [68, 20], // rwfRef : left, top
+    [88, 30], // rbRef : left, top
+    [55, 44], // cmRef : left, top
+    [55, 30], // ballRef : left, top
   ],
   [
-    { left: 40, top: 16 }, // cfRef
-    { left: 24, top: 16 }, // lwfRef
-    { left: 56, top: 14 }, // rwfRef
-    { left: 80, top: 14 }, // rbRef
-    { left: 55, top: 82 }, // cmRef
-    { left: 78, top: 18 }, // ballRef
+    [40, 16], // cfRef : left, top
+    [24, 16], // lwfRef : left, top
+    [56, 14], // rwfRef : left, top
+    [80, 14], // rbRef : left, top
+    [55, 44], // cmRef : left, top
+    [78, 18], // ballRef : left, top
   ],
 ];
 
 export const actions = (...args) => {
-  const action = positions.map((position) => {
+  const action = locations.map((position) => {
     return args.map((arg, index) => {
       return {
         target: arg,
         action: (reference) => {
-          reference.current.style.top = `${position[index]?.top}%`;
-          reference.current.style.left = `${position[index]?.left}%`;
+          const [left, top] = position?.[index];
+          reference.current.style.left = `${left}%`;
+          reference.current.style.top = `${top}%`;
         },
       };
     });
