@@ -31,8 +31,16 @@ const Main = styled.div`
 `;
 
 const Header = styled.div`
-  padding: 10px 20px;
+  padding: 10px 0px;
   margin-bottom: 10px;
+  svg {
+    padding-left: 10px;
+  }
+  span {
+    height: 100%;
+    vertical-align: middle;
+    padding-bottom: 15px;
+  }
 `;
 
 const Body = styled.div``;
@@ -101,13 +109,13 @@ export default function Navigate({ setOpenMenu }) {
             <summary>tactics</summary>
             <ul>
               <li>
-                <Link to="/sideplay1">
-                  <span>Side Play1</span>
+                <Link to="/sideplay1" state={{ title: "Side Play 1" }}>
+                  <span>Side Play 1</span>
                 </Link>
               </li>
               <li>
-                <Link to="/switchplay1">
-                  <span>Switch Play1</span>
+                <Link to="/switchplay1" state={{ title: "Switch Play 1" }}>
+                  <span>Switch Play 1</span>
                 </Link>
               </li>
             </ul>
@@ -115,6 +123,7 @@ export default function Navigate({ setOpenMenu }) {
           <Details>
             <summary>position</summary>
             <ul>
+              {/* 
               <li>
                 <Link to="/position442">
                   <span>4-4-2</span>
@@ -122,6 +131,17 @@ export default function Navigate({ setOpenMenu }) {
               </li>
               <li>
                 <Link to="/position433">
+                  <span>4-3-3</span>
+                </Link>
+              </li>
+               */}
+              <li>
+                <Link to="/positions/442" state={{ title: "4-4-2" }}>
+                  <span>4-4-2</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/positions/433" state={{ title: "4-3-3" }}>
                   <span>4-3-3</span>
                 </Link>
               </li>

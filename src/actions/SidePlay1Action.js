@@ -1,3 +1,5 @@
+import { tacticsActions } from "../common/common";
+
 const locations = [
   [
     [48, 15], // cfRef : left, top
@@ -21,7 +23,7 @@ const locations = [
     [68, 20], // rwfRef : left, top
     [88, 30], // rbRef : left, top
     [55, 44], // cmRef : left, top
-    [55, 30], // ballRef : left, top
+    [55, 28], // ballRef : left, top
   ],
   [
     [40, 16], // cfRef : left, top
@@ -29,25 +31,11 @@ const locations = [
     [56, 14], // rwfRef : left, top
     [80, 14], // rbRef : left, top
     [55, 44], // cmRef : left, top
-    [78, 18], // ballRef : left, top
+    [78, 16], // ballRef : left, top
   ],
 ];
 
-export const actions = (...args) => {
-  const action = locations.map((position) => {
-    return args.map((arg, index) => {
-      return {
-        target: arg,
-        action: (reference) => {
-          const [left, top] = position?.[index];
-          reference.current.style.left = `${left}%`;
-          reference.current.style.top = `${top}%`;
-        },
-      };
-    });
-  });
-  return action;
-};
+export const actions = (...args) => tacticsActions(locations, [...args]);
 
 /*
 export const actions = (cfRef, lwfRef, rwfRef, rbRef, cmRef, ballRef) => {

@@ -30,12 +30,12 @@ export default function SwitchPlay1() {
     cfRef,
     lwfRef,
     rwfRef,
-    rbRef,
-    lbRef,
-    cbRef,
-    cb2Ref,
     cmRef,
     cm2Ref,
+    rbRef,
+    cbRef,
+    cb2Ref,
+    lbRef,
     ballRef
   );
 
@@ -109,14 +109,14 @@ export default function SwitchPlay1() {
       <Stadium>
         <Field></Field>
         <Player ref={cfRef} label="CF" />
-        <Player ref={rwfRef} label="RWF" />
         <Player ref={lwfRef} label="LWF" />
+        <Player ref={rwfRef} label="RWF" />
         <Player ref={cmRef} label="CM" />
         <Player ref={cm2Ref} label="CM" against />
         <Player ref={rbRef} label="RB" against />
-        <Player ref={lbRef} label="LB" against />
         <Player ref={cbRef} label="CB" against />
         <Player ref={cb2Ref} label="CB" against />
+        <Player ref={lbRef} label="LB" against />
         <Ball ref={ballRef} />
       </Stadium>
     </Wrapper>

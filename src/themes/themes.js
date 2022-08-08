@@ -19,8 +19,8 @@ export const defaultTheme = {
 
   player: {
     playerColor: "tomato",
-    playerColor2: "yellow",
-    playerLabel: "aqua",
+    playerColor2: "violet",
+    playerLabel: "white",
   },
 
   ground: {

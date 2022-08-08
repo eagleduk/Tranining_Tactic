@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const DefaultButton = styled.button`
-  width: 35px;
+  width: 100%;
   height: 35px;
   border-radius: 10px;
   border-width: 0;
@@ -21,6 +21,8 @@ const DefaultButton = styled.button`
     cursor: default;
   }
 `;
+
+export default DefaultButton;
 
 const PrevStyle = styled(DefaultButton)`
   &::before {

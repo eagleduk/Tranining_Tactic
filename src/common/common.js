@@ -9,6 +9,21 @@ export function play(fn, ms = 2000) {
   }).catch((err) => console.log("play ", err));
 }
 
+export function tacticsActions(locations, references) {
+  return locations.map((position) => {
+    return references.map((reference, index) => {
+      return {
+        target: reference,
+        action: (reference) => {
+          const [left, top] = position?.[index];
+          reference.current.style.left = `${left}%`;
+          reference.current.style.top = `${top}%`;
+        },
+      };
+    });
+  });
+}
+
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
