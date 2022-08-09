@@ -4,17 +4,18 @@ import { Route, Routes, useLocation } from "react-router-dom";
 
 import Navigate from "./navigate";
 import LadderTraining1 from "./trainings/LadderTraining1";
-import SidePlay1 from "./tactics/SidePlay1";
 import Home from "./Home";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import SwitchPlay1 from "./tactics/SwitchPlay1";
-import Position433 from "./position/Position433";
-import Position442 from "./position/Position442";
-import Positions from "./position/Positions";
+import Formation433 from "./formation/Formation433";
+import Formation442 from "./formation/Formation442";
+import Formation from "./formation/Formation";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import DefaultButton from "./tools/Buttons";
+// import SidePlay1 from "./tactics/SidePlay1";
+// import SwitchPlay1 from "./tactics/SwitchPlay1";
+import SidePlay1 from "./tactics/sideplay/SidePlay1";
+import SwitchPlay1 from "./tactics/switchplay/SwitchPlay1";
 
 const Body = styled.div`
   width: 100vw;
@@ -26,6 +27,10 @@ const Header = styled.div`
   margin-bottom: 10px;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
+  box-sizing: border-box;
+  border-bottom-width: 4px;
+  border-bottom-style: double;
+  border-bottom-color: ${(props) => props.theme.borderColor};
 `;
 
 const MenuButton = styled.button`
@@ -59,7 +64,7 @@ function App() {
         <MenuButton onClick={() => setOpenMenu(true)}>
           <FontAwesomeIcon icon={faBars} size="2x" />
         </MenuButton>
-        <TitlaContainer>{location?.state?.title}</TitlaContainer>
+        <TitlaContainer>{location?.state?.title || "HOME"}</TitlaContainer>
       </Header>
       {openMenu ? <Navigate setOpenMenu={setOpenMenu} /> : null}
 
@@ -68,11 +73,11 @@ function App() {
         <Route path="/ladder" element={<LadderTraining1 />} />
         <Route path="/sideplay1" element={<SidePlay1 />} />
         <Route path="/switchplay1" element={<SwitchPlay1 />} />
-        <Route path="/position442" element={<Position442 />} />
-        <Route path="/position433" element={<Position433 />} />
-        <Route path="/positions">
-          <Route path="442" element={<Positions formation={"442"} />} />
-          <Route path="433" element={<Positions formation={"433"} />} />
+        <Route path="/position442" element={<Formation442 />} />
+        <Route path="/position433" element={<Formation433 />} />
+        <Route path="/formation">
+          <Route path="442" element={<Formation formation={"442"} />} />
+          <Route path="433" element={<Formation formation={"433"} />} />
         </Route>
       </Routes>
     </Body>

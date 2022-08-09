@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FormationMenu, TacticsMenu } from "./common/Components/Menu";
 
 const NavStyle = styled.nav`
   width: 100%;
@@ -56,6 +57,9 @@ const Details = styled.details`
     :hover {
       background-color: ${(props) => props.theme.menu.hoverColor};
     }
+    ::-webkit-details-marker {
+      display: none;
+    }
   }
 
   summary::after {
@@ -95,57 +99,13 @@ export default function Navigate({ setOpenMenu }) {
           </Link>
         </Header>
         <Body>
-          <Details style={{ display: "" }}>
-            <summary>training</summary>
-            <ul>
-              <li>
-                <Link to="/ladder">
-                  <span>ladder training</span>
-                </Link>
-              </li>
-            </ul>
+          <Details>
+            <summary>Tactics</summary>
+            <TacticsMenu />
           </Details>
           <Details>
-            <summary>tactics</summary>
-            <ul>
-              <li>
-                <Link to="/sideplay1" state={{ title: "Side Play 1" }}>
-                  <span>Side Play 1</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/switchplay1" state={{ title: "Switch Play 1" }}>
-                  <span>Switch Play 1</span>
-                </Link>
-              </li>
-            </ul>
-          </Details>
-          <Details>
-            <summary>position</summary>
-            <ul>
-              {/* 
-              <li>
-                <Link to="/position442">
-                  <span>4-4-2</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/position433">
-                  <span>4-3-3</span>
-                </Link>
-              </li>
-               */}
-              <li>
-                <Link to="/positions/442" state={{ title: "4-4-2" }}>
-                  <span>4-4-2</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/positions/433" state={{ title: "4-3-3" }}>
-                  <span>4-3-3</span>
-                </Link>
-              </li>
-            </ul>
+            <summary>Formation</summary>
+            <FormationMenu />
           </Details>
         </Body>
       </Main>

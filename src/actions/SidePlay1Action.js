@@ -1,5 +1,13 @@
 import { tacticsActions } from "../common/common";
 
+export const players = [
+  { label: "CF", against: false },
+  { label: "LWF", against: false },
+  { label: "RWF", against: false },
+  { label: "RB", against: false },
+  { label: "CM", against: false },
+];
+
 const locations = [
   [
     [48, 15], // cfRef : left, top

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { actions } from "../actions/switchPlay1Action";
 import { HeaderContainer, play, Wrapper } from "../common/common";
 import Ball from "../tools/Ball";
 import {
@@ -13,33 +12,13 @@ import Field from "../tools/Field";
 import Player from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
-export default function SwitchPlay1() {
-  const cfRef = useRef(),
-    lwfRef = useRef(),
-    rwfRef = useRef(),
-    rbRef = useRef(),
-    lbRef = useRef(),
-    cbRef = useRef(),
-    cb2Ref = useRef(),
-    cmRef = useRef(),
-    cm2Ref = useRef(),
-    ballRef = useRef();
-
-  const actionSteps = actions(
-    cfRef.current,
-    lwfRef.current,
-    rwfRef.current,
-    cmRef.current,
-    cm2Ref.current,
-    rbRef.current,
-    cbRef.current,
-    cb2Ref.current,
-    lbRef.current,
-    ballRef.current
-  );
+export default function Tactics({ players, actions }) {
+  const playerRefs = useRef([]);
+  const ballRef = useRef();
 
   const [step, setStep] = useState(0);
   const [onPlay, setPlay] = useState(false);
+  const [actionSteps, setActionSteps] = useState([]);
 
   const onPlayButtonHandler = () => {
     setPlay(true);
@@ -66,6 +45,10 @@ export default function SwitchPlay1() {
   };
 
   useEffect(() => {
+    setActionSteps(actions(...playerRefs.current, ballRef.current));
+  }, [actions, setActionSteps]);
+
+  useEffect(() => {
     (async () => {
       const action = actionSteps[step] || [];
       const actionPromises = action.map(({ target, action }) => {
@@ -83,7 +66,6 @@ export default function SwitchPlay1() {
         }))();
     })();
   }, [step, actionSteps, onPlay]);
-
   return (
     <Wrapper>
       <HeaderContainer>
@@ -106,17 +88,19 @@ export default function SwitchPlay1() {
         />
       </HeaderContainer>
       <Stadium>
-        <Field></Field>
-        <Player ref={cfRef} label="CF" />
-        <Player ref={lwfRef} label="LWF" />
-        <Player ref={rwfRef} label="RWF" />
-        <Player ref={cmRef} label="CM" />
-        <Player ref={cm2Ref} label="CM" against />
-        <Player ref={rbRef} label="RB" against />
-        <Player ref={cbRef} label="CB" against />
-        <Player ref={cb2Ref} label="CB" against />
-        <Player ref={lbRef} label="LB" against />
-        <Ball ref={ballRef} />
+        <Field>
+          {players.map(({ label, against }, index) => {
+            return (
+              <Player
+                ref={(el) => (playerRefs.current[index] = el)}
+                label={label}
+                against={against}
+                key={index}
+              />
+            );
+          })}
+          <Ball ref={ballRef} />
+        </Field>
       </Stadium>
     </Wrapper>
   );

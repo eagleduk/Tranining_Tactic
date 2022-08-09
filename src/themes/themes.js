@@ -1,6 +1,7 @@
 export const defaultTheme = {
   backgroundColor: "white",
-  textColor: "black",
+  borderColor: "darkgrey",
+  textColor: "inherit",
 
   ladderSideColor: "black",
   ladderCrossColor: "red",

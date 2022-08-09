@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import styled from "styled-components";
 import { HeaderContainer, play, Wrapper } from "../common/common";
 import Ball from "../tools/Ball";
 import {
@@ -24,7 +23,14 @@ export default function SidePlay1() {
     cmRef = useRef(),
     ballRef = useRef();
 
-  const actionSteps = actions(cfRef, lwfRef, rwfRef, rbRef, cmRef, ballRef);
+  const actionSteps = actions(
+    cfRef.current,
+    lwfRef.current,
+    rwfRef.current,
+    rbRef.current,
+    cmRef.current,
+    ballRef.current
+  );
 
   const [step, setStep] = useState(0);
   const [onPlay, setPlay] = useState(false);
@@ -57,7 +63,10 @@ export default function SidePlay1() {
     (async () => {
       const action = actionSteps[step] || [];
       const actionPromises = action.map(({ target, action }) => {
-        return play(() => action(target), 3000);
+        if (target) {
+          return play(() => action(target), 3000);
+        }
+        return null;
       });
       await (() =>
         Promise.all(actionPromises).then(() => {

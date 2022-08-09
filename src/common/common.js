@@ -16,8 +16,8 @@ export function tacticsActions(locations, references) {
         target: reference,
         action: (reference) => {
           const [left, top] = position?.[index];
-          reference.current.style.left = `${left}%`;
-          reference.current.style.top = `${top}%`;
+          reference.style.left = `${left}%`;
+          reference.style.top = `${top}%`;
         },
       };
     });

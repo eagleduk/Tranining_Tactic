@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { actions } from "../actions/positionsAction";
+import { actions } from "../actions/formationsAction";
 import { HeaderContainer, Wrapper } from "../common/common";
 import Field from "../tools/Field";
 import Player from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
-export default function Position433() {
+export default function Formation433() {
   const cfRef = useRef(),
     lwfRef = useRef(),
     rwfRef = useRef(),

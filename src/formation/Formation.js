@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { actions } from "../actions/positionsAction";
+import { actions } from "../actions/formationsAction";
 import { HeaderContainer, Wrapper } from "../common/common";
 import DefaultButton from "../tools/Buttons";
 import Field from "../tools/Field";
 import Player from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
-export default function Positions({ formation }) {
+export default function Formation({ formation }) {
   const positionInfo = actions(formation);
   const [location, setLocation] = useState("default");
   const references = useRef([]);
