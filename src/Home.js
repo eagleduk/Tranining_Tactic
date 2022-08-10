@@ -3,34 +3,36 @@ import { FormationMenu, TacticsMenu } from "./common/Components/Menu";
 
 const HomeContainer = styled.div`
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
   align-items: flex-end;
   gap: 15px;
 `;
 
 const CategoryWapper = styled.div`
-  margin-right: 2px;
+  margin-right: 5px;
   padding: 5px 20px;
   width: 200px;
   box-sizing: border-box;
-  border: 1px solid;
-  border-color: transparent;
+  border: 3px solid;
+  border-color: ${(props) => props.theme.home.borderColor};
   border-radius: 10px;
+  color: ${(props) => props.theme.home.color};
+
+  :hover {
+    border-color: ${(props) => props.theme.home.borderColor2};
+  }
+
   ul {
-    display: none;
     font-size: 22px;
     li {
       padding: 5px;
-      :hover {
-        background-color: aqua;
-      }
-    }
-  }
-  &:hover {
-    border-color: black;
-    ul {
       display: block;
       text-align: right;
+      :hover {
+        background-color: ${(props) => props.theme.home.hoverColor};
+      }
     }
   }
 `;

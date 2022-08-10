@@ -72,10 +72,10 @@ const HalfLine = styled(OutLine)`
 `;
 
 const HalfCircle = styled(OutLine)`
-  width: 20%;
-  height: 20%;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  top: calc(100% * 0.5 - 10%);
+  top: calc(100% * 0.5 - 40px);
   position: absolute;
 `;
 

@@ -1,14 +1,23 @@
 export const defaultTheme = {
   backgroundColor: "white",
   borderColor: "darkgrey",
-  textColor: "inherit",
+  textColor: "black",
 
   ladderSideColor: "black",
   ladderCrossColor: "red",
 
   footColor: "tomato",
 
-  ballColor: "black",
+  ball: {
+    color: "black",
+  },
+
+  home: {
+    color: "white",
+    borderColor: "darkgrey",
+    borderColor2: "crimson",
+    hoverColor: "aqua",
+  },
 
   menu: {
     containerBGColor: "rgba(0, 0, 0, .6)",
