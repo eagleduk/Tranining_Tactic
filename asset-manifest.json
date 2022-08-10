@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Tranining_Tactics/static/css/main.3b7d8f11.css",
-    "main.js": "/Tranining_Tactics/static/js/main.ea826262.js",
+    "main.js": "/Tranining_Tactics/static/js/main.eae00f74.js",
     "static/media/background.jpg": "/Tranining_Tactics/static/media/background.4ece9b128891d9cb71be.jpg",
     "index.html": "/Tranining_Tactics/index.html",
     "main.3b7d8f11.css.map": "/Tranining_Tactics/static/css/main.3b7d8f11.css.map",
-    "main.ea826262.js.map": "/Tranining_Tactics/static/js/main.ea826262.js.map"
+    "main.eae00f74.js.map": "/Tranining_Tactics/static/js/main.eae00f74.js.map"
   },
   "entrypoints": [
     "static/css/main.3b7d8f11.css",
-    "static/js/main.ea826262.js"
+    "static/js/main.eae00f74.js"
   ]
 }
