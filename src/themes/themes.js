@@ -1,3 +1,5 @@
+const TRANSITIONTIME = "2s";
+
 export const defaultTheme = {
   backgroundColor: "white",
   borderColor: "darkgrey",
@@ -10,6 +12,7 @@ export const defaultTheme = {
 
   ball: {
     color: "black",
+    duration: TRANSITIONTIME,
   },
 
   home: {
@@ -31,6 +34,7 @@ export const defaultTheme = {
     playerColor: "tomato",
     playerColor2: "violet",
     playerLabel: "white",
+    duration: TRANSITIONTIME,
   },
 
   ground: {

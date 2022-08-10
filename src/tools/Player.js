@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
 const Player = styled.div`
-  width: 35px;
-  height: 35px;
-  border-radius: 25px;
+  width: 32px;
+  height: 32px;
+  min-width: 30px;
+  min-height: 30px;
+  border-radius: 50%;
   background-color: ${(props) =>
     props.against
       ? props.theme.player.playerColor2
       : props.theme.player.playerColor};
   color: ${(props) => props.theme.player.playerLabel};
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: 2s;
+  transition-duration: ${(props) => props.theme.player.duration};
 
   ::before {
     content: ${(props) => (props.label ? `"${props.label}"` : "")};

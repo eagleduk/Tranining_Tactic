@@ -21,7 +21,7 @@ import Background from "./images/background.jpg";
 
 const Body = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 88vh;
   display: flex;
   flex-direction: column;
   color: ${(props) => props.theme.textColor};

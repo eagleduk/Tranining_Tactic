@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StadiumStyle = styled.div`
   width: 90vw;
-  height: 600px;
+  height: 70vh;
   position: relative;
   overflow: hidden;
 `;
