@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Tranining_Tactics.git/static/css/main.3b7d8f11.css",
-    "main.js": "/Tranining_Tactics.git/static/js/main.826ccd56.js",
-    "static/media/background.jpg": "/Tranining_Tactics.git/static/media/background.4ece9b128891d9cb71be.jpg",
-    "index.html": "/Tranining_Tactics.git/index.html",
-    "main.3b7d8f11.css.map": "/Tranining_Tactics.git/static/css/main.3b7d8f11.css.map",
-    "main.826ccd56.js.map": "/Tranining_Tactics.git/static/js/main.826ccd56.js.map"
+    "main.css": "/Tranining_Tactics/static/css/main.3b7d8f11.css",
+    "main.js": "/Tranining_Tactics/static/js/main.a51183b6.js",
+    "static/media/background.jpg": "/Tranining_Tactics/static/media/background.4ece9b128891d9cb71be.jpg",
+    "index.html": "/Tranining_Tactics/index.html",
+    "main.3b7d8f11.css.map": "/Tranining_Tactics/static/css/main.3b7d8f11.css.map",
+    "main.a51183b6.js.map": "/Tranining_Tactics/static/js/main.a51183b6.js.map"
   },
   "entrypoints": [
     "static/css/main.3b7d8f11.css",
-    "static/js/main.826ccd56.js"
+    "static/js/main.a51183b6.js"
   ]
 }
