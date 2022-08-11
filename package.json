@@ -2,6 +2,11 @@
   "homepage": "https://eagleduk.github.io/Tranining_Tactics",
   "name": "03.training",
   "version": "0.1.0",
+  "description": "Tactics Board",
+  "author": {
+    "name": "eagleduk",
+    "email": "eagleduk@gmail.com"
+  },
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.2",

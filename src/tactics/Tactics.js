@@ -72,19 +72,27 @@ export default function Tactics({ players, actions }) {
         <PrevButton
           onClick={onPrevStepButtonHandler}
           disabled={step === 0 || onPlay}
+          title="Prev"
         />
-        <PauseButton onClick={onPauseButtonHandler} disabled={!onPlay} />
+        <PauseButton
+          onClick={onPauseButtonHandler}
+          disabled={!onPlay}
+          title="Pause"
+        />
         <PlayButton
           onClick={onPlayButtonHandler}
           disabled={step === actionSteps.length - 1 || onPlay}
+          title="Play"
         />
         <StopButton
           onClick={onStopButtonHandler}
           disabled={step === 0 || onPlay}
+          title="Stop"
         />
         <NextButton
           onClick={onNextStepButtonHandler}
           disabled={step === actionSteps.length - 1 || onPlay}
+          title="Next"
         />
       </HeaderContainer>
       <Stadium>

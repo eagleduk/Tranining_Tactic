@@ -18,17 +18,18 @@ import SidePlay1 from "./tactics/sideplay/SidePlay1";
 import SwitchPlay1 from "./tactics/switchplay/SwitchPlay1";
 
 import Background from "./images/background.jpg";
+import Footer from "./common/Components/Footer";
 
 const Body = styled.div`
   width: 100vw;
-  height: 88vh;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
   color: ${(props) => props.theme.textColor};
   background-color: ${(props) => props.theme.backgroundColor};
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
 `;
 
-const Header = styled.div`
+const Header = styled.header`
   height: 50px;
   display: grid;
   grid-template-columns: 50px 1fr 50px;
@@ -45,6 +46,7 @@ const Main = styled.div`
   background-size: cover;
   background-position-x: 0px;
   background-repeat: no-repeat;
+  box-sizing: border-box;
 `;
 
 const MenuButton = styled.button`
@@ -68,7 +70,6 @@ const TitleContainer = styled.div`
 function App() {
   const [openMenu, setOpenMenu] = useState(true);
   const location = useLocation();
-  //console.log("App js ", key);
 
   useEffect(() => setOpenMenu(false), [location?.key]);
 
@@ -96,6 +97,8 @@ function App() {
           </Route>
         </Routes>
       </Main>
+
+      <Footer />
     </Body>
   );
 }
