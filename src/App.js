@@ -23,6 +23,7 @@ import Footer from "./common/Components/Footer";
 const Body = styled.div`
   width: 100vw;
   height: 100vh;
+  min-height: 560px;
   color: ${(props) => props.theme.textColor};
   background-color: ${(props) => props.theme.backgroundColor};
   display: grid;
@@ -41,7 +42,7 @@ const Header = styled.header`
 
 const Main = styled.div`
   height: 100%;
-  padding-top: 10px;
+  padding: 10px 0;
   background-image: url("${Background}");
   background-size: cover;
   background-position-x: 0px;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const StadiumStyle = styled.div`
-  width: 90vw;
+  width: 100%;
   height: 70vh;
   position: relative;
   overflow: hidden;
