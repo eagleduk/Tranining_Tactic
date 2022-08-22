@@ -19,6 +19,7 @@ import SwitchPlay1 from "./tactics/switchplay/SwitchPlay1";
 
 import Background from "./images/background.jpg";
 import Footer from "./common/Components/Footer";
+import { CustomSet } from "./tactics/custom/CustomSet";
 
 const Body = styled.div`
   width: 100vw;
@@ -96,6 +97,7 @@ function App() {
             <Route path="442" element={<Formation formation={"442"} />} />
             <Route path="433" element={<Formation formation={"433"} />} />
           </Route>
+          <Route path="/custom" element={<CustomSet />} />
         </Routes>
       </Main>
 

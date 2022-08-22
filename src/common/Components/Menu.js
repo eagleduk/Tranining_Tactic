@@ -67,3 +67,15 @@ export function FormationMenu() {
     </Ul>
   );
 }
+
+export function CustomSet() {
+  return (
+    <Ul>
+      <Li>
+        <Link to="/custom">
+          <span>Create Custom</span>
+        </Link>
+      </Li>
+    </Ul>
+  );
+}

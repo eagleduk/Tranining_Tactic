@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FormationMenu, TacticsMenu } from "./common/Components/Menu";
+import {
+  CustomSet,
+  FormationMenu,
+  TacticsMenu,
+} from "./common/Components/Menu";
 
 const NavStyle = styled.nav`
   width: 100%;
@@ -44,7 +48,22 @@ const Header = styled.div`
   }
 `;
 
-const Body = styled.div``;
+const Body = styled.div`
+  li {
+    padding: 5px 0;
+    font-size: 16px;
+    :hover {
+      background-color: ${(props) => props.theme.menu.hoverColor};
+      cursor: pointer;
+    }
+
+    span {
+      display: block;
+      padding-left: 15px;
+      box-sizing: border-box;
+    }
+  }
+`;
 
 const Details = styled.details`
   margin-bottom: 5px;
@@ -71,21 +90,6 @@ const Details = styled.details`
     content: "—";
     font-size: 18px;
   }
-
-  li {
-    padding: 5px 0;
-    font-size: 16px;
-    :hover {
-      background-color: ${(props) => props.theme.menu.hoverColor};
-      cursor: pointer;
-    }
-
-    span {
-      display: block;
-      padding-left: 15px;
-      box-sizing: border-box;
-    }
-  }
 `;
 
 export default function Navigate({ setOpenMenu }) {
@@ -107,6 +111,7 @@ export default function Navigate({ setOpenMenu }) {
             <summary>Formation</summary>
             <FormationMenu />
           </Details>
+          <CustomSet />
         </Body>
       </Main>
       <div
