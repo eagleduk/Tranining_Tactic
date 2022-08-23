@@ -17,7 +17,8 @@ const Player = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: ${(props) => props.theme.player.duration};
+  transition-duration: ${(props) =>
+    props.draggable ? "0s" : props.theme.player.duration};
 
   ::before {
     content: ${(props) => (props.label ? `"${props.label}"` : "")};

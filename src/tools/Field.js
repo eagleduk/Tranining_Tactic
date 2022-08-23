@@ -110,7 +110,7 @@ const PenaltyCircle2 = styled(OutLine)`
 
 export default function Field({ children }) {
   return (
-    <Ground>
+    <Ground onDragOver={(event) => event.preventDefault()}>
       <TouchLine>
         <PenaltyZone>
           <SafetyZone />

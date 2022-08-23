@@ -6,7 +6,8 @@ const Ball = styled.div`
   border-radius: 10px;
   background-color: ${(props) => props.theme.ball.color};
   position: absolute;
-  transition-duration: ${(props) => props.theme.ball.duration};
+  transition-duration: ${(props) =>
+    props.draggable ? "0s" : props.theme.ball.duration};
 `;
 
 export default Ball;
