@@ -49,9 +49,12 @@ table {
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+* {
+	box-sizing: border-box;
+}
+
 html {	
 	font-family: "Poppins", "Noto Serif KR", sans-serif;
-	box-sizing: border-box;
 }
 
 a {

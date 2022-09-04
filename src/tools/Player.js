@@ -23,6 +23,12 @@ const Player = styled.div`
   ::before {
     content: ${(props) => (props.label ? `"${props.label}"` : "")};
   }
+
+  &.selected {
+    border-color: blue;
+    border-width: 2px;
+    border-style: solid;
+  }
 `;
 
 export default Player;

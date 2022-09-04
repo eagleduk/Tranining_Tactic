@@ -35,9 +35,14 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export const HeaderContainer = styled.div`
+const ContainerFormat = styled.div`
   width: 100%;
   display: flex;
   gap: 5px;
   justify-content: center;
+  align-items: center;
 `;
+
+export const HeaderContainer = styled(ContainerFormat)``;
+
+export const FooterContainer = styled(ContainerFormat)``;
