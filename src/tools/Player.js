@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Player = styled.div`
+export const Player = styled.div`
   width: 32px;
   height: 32px;
   min-width: 30px;
@@ -31,4 +31,9 @@ const Player = styled.div`
   }
 `;
 
-export default Player;
+export const AddPlayer = styled(Player)`
+  position: static;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+`;

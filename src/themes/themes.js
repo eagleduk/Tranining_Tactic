@@ -47,4 +47,11 @@ export const defaultTheme = {
     background: "tomato",
     color: "white",
   },
+
+  icon: {
+    normal: "rgba(0,0,0, .6)",
+    hover: "rgba(0,0,0, .8)",
+    active: "rgba(10,10,10, 1)",
+    disabled: "rgba(0,0,0, .3)",
+  },
 };

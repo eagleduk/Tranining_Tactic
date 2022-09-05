@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { actions } from "../actions/formationsAction";
 import { HeaderContainer, Wrapper } from "../common/common";
 import Field from "../tools/Field";
-import Player from "../tools/Player";
+import { Player } from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
 export default function Formation433() {

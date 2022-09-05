@@ -9,7 +9,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const DefaultButton = styled.button`
-  width: 100%;
   height: 35px;
   border-radius: 10px;
   border-width: 0;
@@ -18,6 +17,7 @@ const DefaultButton = styled.button`
   color: ${(props) => props.theme.button.color};
   font-size: 22px;
   text-align: center;
+  padding: 3px 25px;
   cursor: pointer;
 
   &:hover {

@@ -1,30 +1,27 @@
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
-import styled from "styled-components";
 import { FooterContainer, HeaderContainer, Wrapper } from "../../common/common";
-import Ball from "../../tools/Ball";
+import DefaultButton from "../../common/Components/Buttons";
+import CustomIcon from "../../common/Components/CustomIcon";
+import Popup from "../../common/Components/Popup";
+import { AddBall, Ball } from "../../tools/Ball";
 import Field from "../../tools/Field";
-import Player from "../../tools/Player";
+import { Player, AddPlayer } from "../../tools/Player";
 import Stadium from "../../tools/Stadium";
-
-const AddPlayer = styled(Player)`
-  position: static;
-  cursor: pointer;
-  width: 35px;
-  height: 35px;
-`;
-
-const AddBall = styled(Ball)``;
 
 export function CustomSet() {
   const [step, setStep] = useState(0);
+
   const [players, setPlayers] = useState([]);
   const [selectedPlayer, setSeletedPlayer] = useState(-1);
   const contentRef = useRef([]);
 
-  const [result, setResult] = useState([]);
+  const [useBall, setUseBall] = useState(false);
+  const [ballLocation, setBallLocation] = useState(undefined);
   const ballRef = useRef();
+
+  const [result, setResult] = useState([]);
+  const [isOpen, setOpen] = useState(false);
 
   const addPlayer = (against) => {
     const player = {
@@ -43,9 +40,6 @@ export function CustomSet() {
   };
 
   const handleDragStart = (event, index) => {
-    const {
-      currentTarget: { parentNode },
-    } = event;
     handleSelectPlayer(event, index);
   };
 
@@ -54,7 +48,31 @@ export function CustomSet() {
     event.currentTarget.style.opacity = ".3";
   };
 
-  const handleDragEnd = (event) => {
+  const handleMoveComponent = (
+    event,
+    isPlayer,
+    { clientX, clientY, offsetWidth, offsetHeight, clientWidth, clientHeight }
+  ) => {
+    const left = ((clientX - 10 - offsetWidth / 2) / clientWidth) * 100;
+    const top =
+      ((clientY - (50 + 10 + 35 + 10) - offsetHeight / 2) / clientHeight) * 100;
+
+    event.currentTarget.style.left = `${left}%`;
+    event.currentTarget.style.top = `${top}%`;
+    event.currentTarget.style.opacity = "1";
+
+    if (isPlayer) {
+      setPlayers((current) => [
+        ...current.slice(0, selectedPlayer),
+        { ...current[selectedPlayer], left, top },
+        ...current.slice(selectedPlayer + 1),
+      ]);
+    } else {
+      setBallLocation({ left, top });
+    }
+  };
+
+  const handleDragEnd = (event, isPlayer) => {
     const {
       clientX,
       clientY,
@@ -65,22 +83,17 @@ export function CustomSet() {
       },
     } = event;
 
-    const left = ((clientX - 10 - offsetWidth / 2) / clientWidth) * 100;
-    const top =
-      ((clientY - (50 + 10 + 35 + 10) - offsetHeight / 2) / clientHeight) * 100;
-
-    event.currentTarget.style.left = `${left}%`;
-    event.currentTarget.style.top = `${top}%`;
-    event.currentTarget.style.opacity = "1";
-
-    setPlayers((current) => [
-      ...current.slice(0, selectedPlayer),
-      { ...current[selectedPlayer], left, top },
-      ...current.slice(selectedPlayer + 1),
-    ]);
+    handleMoveComponent(event, isPlayer, {
+      clientX,
+      clientY,
+      offsetWidth,
+      offsetHeight,
+      clientWidth,
+      clientHeight,
+    });
   };
 
-  const handleTouch = (event) => {
+  const handleTouch = (event, isPlayer) => {
     const {
       changedTouches: [{ clientX, clientY }],
       currentTarget: {
@@ -90,12 +103,14 @@ export function CustomSet() {
       },
     } = event;
 
-    const left = ((clientX - 10 - offsetWidth / 2) / clientWidth) * 100;
-    const top =
-      ((clientY - (50 + 10 + 35 + 10) - offsetHeight / 2) / clientHeight) * 100;
-
-    event.currentTarget.style.left = `${left}%`;
-    event.currentTarget.style.top = `${top}%`;
+    handleMoveComponent(event, isPlayer, {
+      clientX,
+      clientY,
+      offsetWidth,
+      offsetHeight,
+      clientWidth,
+      clientHeight,
+    });
   };
 
   const handleSelectPlayer = (event, index) => {
@@ -110,32 +125,51 @@ export function CustomSet() {
     }
   };
 
+  const handleBallUse = (event) => setUseBall((current) => !current);
+
   const handleDeletePlayer = (event) => {
     if (selectedPlayer > -1) deletePlayer(selectedPlayer);
   };
 
   const handlePrevStep = (event) => {
+    setPlayers((current) => result[step - 1].players);
+    setUseBall(Boolean(result[step - 1].ball));
+    setBallLocation((current) => result[step - 1].ball);
     setStep((current) => current - 1);
   };
 
   const handleNextStep = (event) => {
+    handleSaveResult(event, true);
+
+    setPlayers((current) =>
+      result[step + 1] ? result[step + 1].players : players
+    );
+    setBallLocation((current) =>
+      result[step + 1] ? result[step + 1].ball : ballLocation
+    );
+    setUseBall(Boolean(result[step + 1].ball));
     setStep((current) => current + 1);
   };
 
-  const saveResult = (event) => {
-    console.log(step, players);
+  const handleSaveResult = (event, isPopup) => {
+    setResult((current) => [
+      ...current.slice(0, step),
+      { players, ball: useBall ? ballLocation : undefined },
+      ...current.slice(step + 1),
+    ]);
+
+    if (!isPopup) setOpen(true);
   };
 
   return (
     <Wrapper onClick={handleSelectPlayer}>
+      <Popup result={result} isOpen={isOpen} setOpen={setOpen} />
       <HeaderContainer>
-        <button onClick={saveResult}>save</button>
-        <button onClick={() => console.log(selectedPlayer, players)}>
-          log
-        </button>
         <AddPlayer label="" onClick={() => addPlayer(false)} />
         <AddPlayer label="" onClick={() => addPlayer(true)} against />
-        <FontAwesomeIcon
+        <AddBall useBall={useBall} onClick={handleBallUse} />
+        <CustomIcon
+          isActive
           icon={faTrashCan}
           size="2x"
           onClick={handleDeletePlayer}
@@ -150,32 +184,43 @@ export function CustomSet() {
                 ref={(el) => (contentRef.current[index] = el)}
                 against={player.against}
                 draggable
-                onTouchMove={handleTouch}
+                onTouchMove={(event) => handleTouch(event, true)}
                 onDragStart={(event) => handleDragStart(event, index)}
                 onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
+                onDragEnd={(event) => handleDragEnd(event, true)}
                 onClick={(event) => handleSelectPlayer(event, index)}
                 style={{ left: `${player.left}%`, top: `${player.top}%` }}
               />
             );
           })}
-          {/*           
-          <Ball
-            ref={ballRef}
-            draggable
-            onTouchMove={handleTouch}
-            onDragStart={handleDragStart}
-            onDrag={handleDrag}
-            onDragEnd={handleDragEnd}
-          /> */}
+          {useBall && (
+            <Ball
+              ref={ballRef}
+              draggable
+              onTouchMove={handleTouch}
+              onDragStart={handleDragStart}
+              onDrag={handleDrag}
+              onDragEnd={handleDragEnd}
+              style={{
+                left: `${ballLocation?.left}%`,
+                top: `${ballLocation?.top}%`,
+              }}
+            />
+          )}
         </Field>
       </Stadium>
       <FooterContainer>
         <span style={{ color: "white", fontSize: "22px" }}>{step}</span>
-        <button disabled={step === 0} onClick={handlePrevStep}>
+        <DefaultButton disabled={step === 0} onClick={handlePrevStep}>
           Prev
-        </button>
-        <button onClick={handleNextStep}>Next</button>
+        </DefaultButton>
+        <DefaultButton onClick={handleNextStep}>Next</DefaultButton>
+        <CustomIcon
+          isActive
+          icon={faFloppyDisk}
+          size="2x"
+          onClick={handleSaveResult}
+        />
       </FooterContainer>
     </Wrapper>
   );

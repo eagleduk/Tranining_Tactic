@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { FormationMenu, TacticsMenu } from "./common/Components/Menu";
+import {
+  CustomSetMenu,
+  FormationMenu,
+  TacticsMenu,
+} from "./common/Components/Menu";
 
 const HomeContainer = styled.div`
   display: flex;
@@ -13,7 +17,7 @@ const HomeContainer = styled.div`
 const CategoryWapper = styled.div`
   margin-right: 5px;
   padding: 5px 20px;
-  width: 200px;
+  width: 230px;
   box-sizing: border-box;
   border: 3px solid;
   border-color: ${(props) => props.theme.home.borderColor};
@@ -53,6 +57,9 @@ export default function Home() {
       <CategoryWapper>
         <Category>Position</Category>
         <FormationMenu />
+      </CategoryWapper>
+      <CategoryWapper>
+        <CustomSetMenu />
       </CategoryWapper>
     </HomeContainer>
   );

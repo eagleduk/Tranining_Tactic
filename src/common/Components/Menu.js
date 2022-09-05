@@ -68,7 +68,7 @@ export function FormationMenu() {
   );
 }
 
-export function CustomSet() {
+export function CustomSetMenu() {
   return (
     <Ul>
       <Li>

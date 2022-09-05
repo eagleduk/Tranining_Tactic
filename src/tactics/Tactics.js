@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { HeaderContainer, play, Wrapper } from "../common/common";
-import Ball from "../tools/Ball";
+import { Ball } from "../tools/Ball";
 import {
   NextButton,
   PauseButton,
   PlayButton,
   PrevButton,
   StopButton,
-} from "../tools/Buttons";
+} from "../common/Components/Buttons";
 import Field from "../tools/Field";
-import Player from "../tools/Player";
+import { Player } from "../tools/Player";
 import Stadium from "../tools/Stadium";
 
 export default function Tactics({ players, actions }) {

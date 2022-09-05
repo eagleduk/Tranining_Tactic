@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  CustomSet,
+  CustomSetMenu,
   FormationMenu,
   TacticsMenu,
 } from "./common/Components/Menu";
@@ -111,7 +111,7 @@ export default function Navigate({ setOpenMenu }) {
             <summary>Formation</summary>
             <FormationMenu />
           </Details>
-          <CustomSet />
+          <CustomSetMenu />
         </Body>
       </Main>
       <div
