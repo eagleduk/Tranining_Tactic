@@ -1,10 +1,2 @@
-#### Feedback
-
-1. 전술 
-   1. 움직임 추가 
-   2. 미들(CM) 추가 
-
-1. 포메이션
-   1. 상대편 추가
-
-1. 크기 재설정
+# React 에서의 .env 파일 사용
+REACT_APP_[Key] = [Value] 형식으로 작성하면 dotenv package 없이 사용 가능

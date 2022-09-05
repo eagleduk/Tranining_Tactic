@@ -50,6 +50,7 @@ export default function Popup({ result, isOpen, setOpen }) {
   const handlePopupClose = (event) => {
     console.log(event.currentTarget);
   };
+
   return (
     <PopupWrapper isOpen={isOpen} onClick={handlePopupClose}>
       <PopupContainer>
