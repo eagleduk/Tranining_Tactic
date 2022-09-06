@@ -6,15 +6,21 @@ const CustomFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.icon.normal};
   &:hover {
     color: ${(props) =>
-      !props.isActive ? props.theme.icon.normal : props.theme.icon.hover};
+      !props["data-is-active"]
+        ? props.theme.icon.normal
+        : props.theme.icon.hover};
   }
   &:active {
     color: ${(props) =>
-      !props.isActive ? props.theme.icon.normal : props.theme.icon.active};
+      !props["data-is-active"]
+        ? props.theme.icon.normal
+        : props.theme.icon.active};
   }
   &:disabled {
     color: ${(props) =>
-      !props.isActive ? props.theme.icon.normal : props.theme.icon.disabled};
+      !props["data-is-active"]
+        ? props.theme.icon.normal
+        : props.theme.icon.disabled};
   }
 `;
 

@@ -6,6 +6,7 @@ import {
   CustomSetMenu,
   FormationMenu,
   TacticsMenu,
+  ManualTacticsNav,
 } from "./common/Components/Menu";
 
 const NavStyle = styled.nav`
@@ -110,6 +111,10 @@ export default function Navigate({ setOpenMenu }) {
           <Details>
             <summary>Formation</summary>
             <FormationMenu />
+          </Details>
+          <Details>
+            <summary>Manual</summary>
+            <ManualTacticsNav />
           </Details>
           <CustomSetMenu />
         </Body>

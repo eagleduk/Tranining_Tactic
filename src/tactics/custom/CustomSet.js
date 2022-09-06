@@ -147,14 +147,16 @@ export function CustomSet() {
     setBallLocation((current) =>
       result[step + 1] ? result[step + 1].ball : ballLocation
     );
-    setUseBall(Boolean(result[step + 1].ball));
+    setUseBall(
+      Boolean(result[step + 1]?.ball ? result[step + 1].ball : useBall)
+    );
     setStep((current) => current + 1);
   };
 
   const handleSaveResult = (event, isPopup) => {
     setResult((current) => [
       ...current.slice(0, step),
-      { players, ball: useBall ? ballLocation : undefined },
+      { players, ball: useBall ? ballLocation : null },
       ...current.slice(step + 1),
     ]);
 
@@ -169,7 +171,7 @@ export function CustomSet() {
         <AddPlayer label="" onClick={() => addPlayer(true)} against />
         <AddBall useBall={useBall} onClick={handleBallUse} />
         <CustomIcon
-          isActive
+          data-is-active
           icon={faTrashCan}
           size="2x"
           onClick={handleDeletePlayer}
@@ -216,7 +218,7 @@ export function CustomSet() {
         </DefaultButton>
         <DefaultButton onClick={handleNextStep}>Next</DefaultButton>
         <CustomIcon
-          isActive
+          data-is-active
           icon={faFloppyDisk}
           size="2x"
           onClick={handleSaveResult}

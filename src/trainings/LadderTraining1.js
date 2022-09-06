@@ -51,7 +51,6 @@ function LadderTraining1() {
 
   const onTrainingPause = () => {
     setPause(false);
-    console.log("stop!!", playTraining);
     clearInterval(playTraining);
   };
 
@@ -63,8 +62,6 @@ function LadderTraining1() {
         setTrainingStep((prev) => prev + 1);
       }, 2000)
     );
-
-    console.log("END", playTraining);
   };
 
   const onNextStep = async () => {
@@ -84,7 +81,6 @@ function LadderTraining1() {
       setTrainingStep(0);
       clearInterval(playTraining);
     } else if (trainingStep === 0) {
-      console.log("초기화");
     } else {
       const [target, action] = steps[trainingStep];
       if (target && action) (async () => await action(target, 2))();

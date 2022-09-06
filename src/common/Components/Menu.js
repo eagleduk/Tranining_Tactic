@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getTactics } from "../fbInstance";
 
 const Ul = styled.ul``;
 
@@ -64,6 +66,86 @@ export function FormationMenu() {
           <span>4-3-3</span>
         </Link>
       </Li>
+    </Ul>
+  );
+}
+
+const Select = styled.select`
+  width: 100%;
+  height: 25px;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-top: 5px;
+`;
+
+const Option = styled.option`
+  width: 100%;
+  &:first-child {
+    text-align: center;
+  }
+`;
+
+export function ManualTacticsHome() {
+  const navigate = useNavigate();
+  const [menus, setMenus] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const tactics = await getTactics();
+      setMenus(tactics.map((t) => ({ id: t.id, ...t.data() })));
+    })();
+  }, []);
+
+  const handleSelectChange = (event) => {
+    const {
+      currentTarget: { value },
+    } = event;
+    if (value) {
+      navigate(`/tactics/${value}`, {
+        state: {
+          title: value,
+        },
+      });
+    }
+  };
+
+  return (
+    <Ul>
+      <Select onChange={handleSelectChange}>
+        <Option value=""> ------ select ------ </Option>
+        {menus.map((data) => {
+          return (
+            <Option key={data.id} value={data.id}>
+              {data.id}
+            </Option>
+          );
+        })}
+      </Select>
+    </Ul>
+  );
+}
+
+export function ManualTacticsNav() {
+  const [menus, setMenus] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const tactics = await getTactics();
+      setMenus(tactics.map((t) => ({ id: t.id, ...t.data() })));
+    })();
+  }, []);
+
+  return (
+    <Ul>
+      {menus.map((data) => {
+        return (
+          <Li key={data?.id}>
+            <Link to={`/tactics/${data.id}`} state={{ title: data.id }}>
+              <span>{data.id}</span>
+            </Link>
+          </Li>
+        );
+      })}
     </Ul>
   );
 }

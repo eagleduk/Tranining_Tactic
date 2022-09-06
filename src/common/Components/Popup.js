@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { find } from "../dbInstance";
+import { addTactics } from "../fbInstance";
 import DefaultButton from "./Buttons";
 import DefaultInput from "./Inputs";
 
@@ -42,13 +42,15 @@ export default function Popup({ result, isOpen, setOpen }) {
     setName(value);
   };
 
-  const handleSaveResult = (event) => {
-    console.log(name, result);
-    find();
+  const handleSaveResult = async (event) => {
+    const saveResult = await addTactics(name, { value: result });
+    if (saveResult) console.log("success");
+    else console.log("fail");
   };
+  const closePopup = () => setOpen(false);
 
   const handlePopupClose = (event) => {
-    console.log(event.currentTarget);
+    if (event.target === event.currentTarget) closePopup();
   };
 
   return (
@@ -65,7 +67,7 @@ export default function Popup({ result, isOpen, setOpen }) {
         </div>
         <div>
           <DefaultButton onClick={handleSaveResult}>save</DefaultButton>
-          <DefaultButton onClick={() => setOpen(false)}>cancel</DefaultButton>
+          <DefaultButton onClick={closePopup}>cancel</DefaultButton>
         </div>
       </PopupContainer>
     </PopupWrapper>

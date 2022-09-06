@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {
   CustomSetMenu,
   FormationMenu,
+  ManualTacticsHome,
   TacticsMenu,
 } from "./common/Components/Menu";
 
@@ -57,6 +58,10 @@ export default function Home() {
       <CategoryWapper>
         <Category>Position</Category>
         <FormationMenu />
+      </CategoryWapper>
+      <CategoryWapper>
+        <Category>Manual</Category>
+        <ManualTacticsHome />
       </CategoryWapper>
       <CategoryWapper>
         <CustomSetMenu />
