@@ -87,7 +87,6 @@ export default function Manual() {
   return (
     <Wrapper>
       <HeaderContainer>
-        {step} / {fullStep}
         <PrevButton
           onClick={onPrevStepButtonHandler}
           disabled={step === 0 || onPlay}

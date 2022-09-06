@@ -17,7 +17,7 @@ const DefaultButton = styled.button`
   color: ${(props) => props.theme.button.color};
   font-size: 22px;
   text-align: center;
-  padding: 3px 25px;
+  padding: 3px 20px;
   cursor: pointer;
 
   &:hover {

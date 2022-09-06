@@ -51,10 +51,15 @@ table {
 
 * {
 	box-sizing: border-box;
+	touch-action: manipulation;
 }
 
 html {	
 	font-family: "Poppins", "Noto Serif KR", sans-serif;
+}
+
+body {
+	overscroll-behavior: contain;
 }
 
 a {

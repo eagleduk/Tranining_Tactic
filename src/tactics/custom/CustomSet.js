@@ -114,6 +114,7 @@ export function CustomSet() {
   };
 
   const handleSelectPlayer = (event, index) => {
+    console.log(event);
     const prevSelected = contentRef.current[selectedPlayer];
     if (prevSelected) {
       prevSelected.classList.remove("selected");
@@ -187,6 +188,7 @@ export function CustomSet() {
                 against={player.against}
                 draggable
                 onTouchMove={(event) => handleTouch(event, true)}
+                onTouchStart={(event) => handleSelectPlayer(event, index)}
                 onDragStart={(event) => handleDragStart(event, index)}
                 onDrag={handleDrag}
                 onDragEnd={(event) => handleDragEnd(event, true)}

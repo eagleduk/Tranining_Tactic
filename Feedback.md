@@ -10,3 +10,5 @@
 1. 크기 재설정
 
 1. Tactics Play 시 바로 Pause 가 안되는 점.
+
+1. touchStart event 시 click event 도 중복 실행되는 점.
