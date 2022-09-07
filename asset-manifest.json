@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Tranining_Tactics/static/css/main.a44fff43.css",
-    "main.js": "/Tranining_Tactics/static/js/main.db42195b.js",
+    "main.css": "/Tranining_Tactics/static/css/main.ec3145ed.css",
+    "main.js": "/Tranining_Tactics/static/js/main.e8d78bf5.js",
     "static/media/ballImage.png": "/Tranining_Tactics/static/media/ballImage.dfdd63ed92e59118a652.png",
     "static/media/background.jpg": "/Tranining_Tactics/static/media/background.4ece9b128891d9cb71be.jpg",
     "index.html": "/Tranining_Tactics/index.html",
-    "main.a44fff43.css.map": "/Tranining_Tactics/static/css/main.a44fff43.css.map",
-    "main.db42195b.js.map": "/Tranining_Tactics/static/js/main.db42195b.js.map"
+    "main.ec3145ed.css.map": "/Tranining_Tactics/static/css/main.ec3145ed.css.map",
+    "main.e8d78bf5.js.map": "/Tranining_Tactics/static/js/main.e8d78bf5.js.map"
   },
   "entrypoints": [
-    "static/css/main.a44fff43.css",
-    "static/js/main.db42195b.js"
+    "static/css/main.ec3145ed.css",
+    "static/js/main.e8d78bf5.js"
   ]
 }
