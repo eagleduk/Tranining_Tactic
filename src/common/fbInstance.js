@@ -6,6 +6,7 @@ import {
   doc,
   setDoc,
   getDoc,
+  serverTimestamp,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -34,7 +35,10 @@ export async function addTactics(id, values) {
     return false;
   }
   try {
-    await setDoc(doc(fs, "tactics", id), values);
+    await setDoc(doc(fs, "tactics", id), {
+      ...values,
+      timstamp: serverTimestamp(),
+    });
     return true;
   } catch (err) {
     console.log("addTactics err", err);

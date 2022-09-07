@@ -154,7 +154,7 @@ export function CustomSetMenu() {
   return (
     <Ul>
       <Li>
-        <Link to="/custom">
+        <Link to="/custom" state={{ title: "Create Manual" }}>
           <span>Create Custom</span>
         </Link>
       </Li>
