@@ -26,7 +26,7 @@ export function CustomSet() {
   const addPlayer = (against) => {
     const player = {
       against,
-      left: 46.5,
+      left: 46,
       top: 47,
     };
     setPlayers((current) => [...current, player]);

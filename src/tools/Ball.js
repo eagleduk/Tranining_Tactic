@@ -3,8 +3,8 @@ import ballImage from "../images/ballImage.png";
 import styled from "styled-components";
 
 export const Ball = styled.div`
-  width: 12px;
-  height: 12px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   position: absolute;
   background-image: url("${ballImage}");
