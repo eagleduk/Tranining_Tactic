@@ -39,9 +39,7 @@ export function CustomSet() {
     ]);
   };
 
-  const handleDragStart = (event, index) => {
-    handleSelectPlayer(event, index);
-  };
+  const handleDragStart = (event, index) => handleSelectPlayer(event, index);
 
   const handleDrag = (event) => {
     event.preventDefault();
@@ -113,24 +111,45 @@ export function CustomSet() {
     });
   };
 
-  const handleSelectPlayer = (event, index) => {
-    console.log(event);
+  const removeSelectPlayer = () => {
     const prevSelected = contentRef.current[selectedPlayer];
     if (prevSelected) {
       prevSelected.classList.remove("selected");
       setSeletedPlayer(-1);
     }
+  };
+
+  const AddSelectPlayer = (event, index) => {
     if (event && index !== undefined) {
       event.target.classList.add("selected");
       setSeletedPlayer(index);
     }
   };
 
+  const handleSelectPlayer = (event, index) => {
+    if ("ontouchstart" in document.documentElement) {
+      if (index === undefined) {
+        removeSelectPlayer();
+      } else {
+        if (event.type === "touchstart") {
+          removeSelectPlayer();
+
+          AddSelectPlayer(event, index);
+        } else {
+          event.stopPropagation();
+        }
+      }
+    } else {
+      removeSelectPlayer();
+
+      AddSelectPlayer(event, index);
+    }
+  };
+
   const handleBallUse = (event) => setUseBall((current) => !current);
 
-  const handleDeletePlayer = (event) => {
-    if (selectedPlayer > -1) deletePlayer(selectedPlayer);
-  };
+  const handleDeletePlayer = (event) =>
+    selectedPlayer > -1 ? deletePlayer(selectedPlayer) : "";
 
   const handlePrevStep = (event) => {
     setPlayers((current) => result[step - 1].players);
@@ -194,6 +213,7 @@ export function CustomSet() {
                 onDragEnd={(event) => handleDragEnd(event, true)}
                 onClick={(event) => handleSelectPlayer(event, index)}
                 style={{ left: `${player.left}%`, top: `${player.top}%` }}
+                dataset={{ touchabled: false, a: 22 }}
               />
             );
           })}
