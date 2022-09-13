@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Player = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   min-width: 30px;
   min-height: 30px;
   border-radius: 50%;
