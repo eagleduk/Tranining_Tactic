@@ -54,4 +54,16 @@ export const defaultTheme = {
     active: "rgba(10,10,10, 1)",
     disabled: "rgba(0,0,0, .3)",
   },
+
+  messages: {
+    color: "rgba(230, 230, 230, 1)",
+    done: {
+      content: "Saved.",
+      backgroundColor: "rgba(55, 183, 29, 1)",
+    },
+    fail: {
+      content: "An error occurred.",
+      backgroundColor: "rgba(128, 0, 0, 1)",
+    },
+  },
 };

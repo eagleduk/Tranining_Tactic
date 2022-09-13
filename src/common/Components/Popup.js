@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { addTactics } from "../fbInstance";
 import DefaultButton from "./Buttons";
 import DefaultInput from "./Inputs";
+import ToastMessage from "./ToastMessage";
 
 const PopupWrapper = styled.div`
   position: fixed;
@@ -35,6 +36,10 @@ const PopupContainer = styled.div`
 
 export default function Popup({ result, isOpen, setOpen }) {
   const [name, setName] = useState("");
+
+  const [isError, setError] = useState(false);
+  const [isMessage, setMessage] = useState(false);
+
   const handleSetName = (event) => {
     const {
       currentTarget: { value },
@@ -44,8 +49,15 @@ export default function Popup({ result, isOpen, setOpen }) {
 
   const handleSaveResult = async (event) => {
     const saveResult = await addTactics(name, { value: result });
-    if (saveResult) console.log("success");
-    else console.log("fail");
+    setMessage(true);
+    setError(!saveResult);
+    /*
+    if (false) {
+      console.log("success");
+    } else {
+      console.log("fail");
+    }
+    */
   };
   const closePopup = () => setOpen(false);
 
@@ -55,6 +67,12 @@ export default function Popup({ result, isOpen, setOpen }) {
 
   return (
     <PopupWrapper isOpen={isOpen} onClick={handlePopupClose}>
+      {isMessage && (
+        <ToastMessage
+          className={isError ? "fail" : "done"}
+          setMessage={setMessage}
+        />
+      )}
       <PopupContainer>
         <div>
           <DefaultInput
@@ -66,7 +84,9 @@ export default function Popup({ result, isOpen, setOpen }) {
           />
         </div>
         <div>
-          <DefaultButton onClick={handleSaveResult}>save</DefaultButton>
+          <DefaultButton onClick={handleSaveResult} disabled={isMessage}>
+            save
+          </DefaultButton>
           <DefaultButton onClick={closePopup}>cancel</DefaultButton>
         </div>
       </PopupContainer>
