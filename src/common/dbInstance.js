@@ -1,16 +1,13 @@
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("Access-Control-Request-Headers", "*");
-myHeaders.append(
-  "api-key",
-  "LkSYYI4Lf65DJKCiJ5VR7vbHalQANiv934rRKGppbPzsg3et43rOuYGe4UW9YHnK"
-);
+myHeaders.append("api-key", process.env.REACT_APP_MONGODB_KEY);
 myHeaders.append("Accept", "application/json");
 
 const raw = JSON.stringify({
-  dataSource: "Cluster0",
-  database: "tacticsboard",
-  collection: "tactics",
+  dataSource: process.env.REACT_APP_MONGODB_SOURCE,
+  database: process.env.REACT_APP_MONGODB_DATABASE,
+  collection: process.env.REACT_APP_MONGODB_COLLECTION,
 });
 
 const requestOptions = {
@@ -22,10 +19,7 @@ const requestOptions = {
 
 export async function find() {
   console.log(process.env);
-  fetch(
-    `https://data.mongodb-api.com/app/data-kauew/endpoint/data/v1/action/find`,
-    requestOptions
-  )
+  fetch(process.env.REACT_APP_MONGODB_URL, requestOptions)
     .then((response) => {
       console.log("aa", response);
       return response;

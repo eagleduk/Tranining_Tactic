@@ -45,4 +45,15 @@ const ContainerFormat = styled.div`
 
 export const HeaderContainer = styled(ContainerFormat)``;
 
-export const FooterContainer = styled(ContainerFormat)``;
+export const FooterContainer = styled(ContainerFormat)`
+  height: 35px;
+  color: ${(props) => props.theme.footer.borderColor};
+  border-radius: 4px;
+  border: 1px solid;
+  padding: 4px;
+  cursor: pointer;
+
+  :hover {
+    background-color: ${(props) => props.theme.footer.hoverColor};
+  }
+`;

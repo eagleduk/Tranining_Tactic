@@ -7,6 +7,7 @@ import {
   setDoc,
   getDoc,
   serverTimestamp,
+  deleteDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -30,12 +31,14 @@ export async function getTactics() {
 }
 
 export async function addTactics(id, values) {
-  const result = await findTactics(id);
-  if (Boolean(result)) {
+  const target = await targetDoc(id);
+  const result = await findTactics(target);
+  if (!Boolean(result)) {
+    console.log("ID 존재..");
     return false;
   }
   try {
-    await setDoc(doc(fs, "tactics", id), {
+    await setDoc(target, {
       ...values,
       timstamp: serverTimestamp(),
     });
@@ -46,7 +49,30 @@ export async function addTactics(id, values) {
   }
 }
 
-export async function findTactics(id) {
-  const tactics = await getDoc(doc(fs, "tactics", `${id}`));
-  return tactics?.data();
+export async function delTactics(id) {
+  const target = await targetDoc(id);
+  const result = await findTactics(target);
+  if (!Boolean(result)) {
+    console.log("ID 미존재..");
+    return false;
+  }
+  try {
+    await deleteDoc(target);
+    return true;
+  } catch (err) {
+    console.log("deleteTactics err", err);
+    return false;
+  }
+}
+
+export async function findTactics(target) {
+  //const d = await targetDoc(id);
+  const tactics = await getDoc(target);
+  if (tactics) return tactics;
+  return null;
+}
+
+export async function targetDoc(id) {
+  const d = doc(fs, "tactics", id);
+  return d;
 }

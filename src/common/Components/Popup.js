@@ -51,13 +51,6 @@ export default function Popup({ result, isOpen, setOpen }) {
     const saveResult = await addTactics(name, { value: result });
     setMessage(true);
     setError(!saveResult);
-    /*
-    if (false) {
-      console.log("success");
-    } else {
-      console.log("fail");
-    }
-    */
   };
   const closePopup = () => setOpen(false);
 

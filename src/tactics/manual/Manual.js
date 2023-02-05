@@ -1,5 +1,7 @@
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FooterContainer, HeaderContainer, Wrapper } from "../../common/common";
 import {
   NextButton,
@@ -8,7 +10,8 @@ import {
   PrevButton,
   StopButton,
 } from "../../common/Components/Buttons";
-import { findTactics } from "../../common/fbInstance";
+import ToastMessage from "../../common/Components/ToastMessage";
+import { findTactics, delTactics, targetDoc } from "../../common/fbInstance";
 import { Ball } from "../../tools/Ball";
 import Field from "../../tools/Field";
 import { Player } from "../../tools/Player";
@@ -16,7 +19,10 @@ import Stadium from "../../tools/Stadium";
 
 export default function Manual() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
+  const [isError, setError] = useState(false);
+  const [isMessage, setMessage] = useState(false);
   const [actionSteps, setActionSteps] = useState();
 
   const [step, setStep] = useState(0);
@@ -32,9 +38,13 @@ export default function Manual() {
 
   useEffect(() => {
     (async () => {
-      const { value } = await findTactics(id);
-      setActionSteps({ ...value });
-      setFullStep(value.length);
+      const target = await targetDoc(id);
+      const tactics = await findTactics(target);
+      if (tactics) {
+        const { value } = tactics.data();
+        setActionSteps({ ...value });
+        setFullStep(value.length);
+      }
     })();
   }, [id]);
 
@@ -84,8 +94,27 @@ export default function Manual() {
     setPlay(false);
   };
 
+  const onDeleteHandler = () => {
+    const result = delTactics(id);
+    setMessage(true);
+    setError(!result);
+    if (result) {
+      setTimeout(() => {
+        navigate("/", {
+          replace: true,
+        });
+      }, 3000);
+    }
+  };
+
   return (
     <Wrapper>
+      {isMessage && (
+        <ToastMessage
+          className={isError ? "fail" : "done"}
+          setMessage={setMessage}
+        />
+      )}
       <HeaderContainer>
         <PrevButton
           onClick={onPrevStepButtonHandler}
@@ -136,7 +165,9 @@ export default function Manual() {
           )}
         </Field>
       </Stadium>
-      <FooterContainer></FooterContainer>
+      <FooterContainer onClick={onDeleteHandler}>
+        <FontAwesomeIcon icon={faTrashCan} />
+      </FooterContainer>
     </Wrapper>
   );
 }

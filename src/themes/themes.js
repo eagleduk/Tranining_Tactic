@@ -66,4 +66,9 @@ export const defaultTheme = {
       backgroundColor: "rgba(128, 0, 0, 1)",
     },
   },
+
+  footer: {
+    borderColor: "red",
+    hoverColor: "aqua",
+  },
 };
